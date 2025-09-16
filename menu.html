@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nurul Hayat - Menu</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <div class="nav-about">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a class="nav-active" href="menu.html">Menu</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <section class="menu1">
+        <p class="p1" >BANYAK PILIHAN</p>
+        <p class="p2">MENU MASAKAN AQIQAH</p>
+        <p class="p3">Sate Komoh, Sate Buntel, Sate Pentul, Sate Beber, Sate Daging Kelapa, Sate Meranggi, Sate Solo, Nasi Putih, Nasi Arab, Empal, Krengsengan, Lapis, Rendang, Solo Kare, Rawon, Asem-asem, Rica-rica, Bakso, Kambing Masak Wijen, Rolade Kambing, Gulai Kacang Hijau, Sop Kambing, Gulai, Kambing Guling.</p>
+        <a class="tombol-menu1" href="https://wa.me/6288220962567"><img src="img/wa.png" alt=""> Order Paket Masakan</a>
+    </section>
+
+    <section class="carousel">
+        <div class="carousel-container">
+	<button class="nav-arrow left">‹</button>
+	<div class="carousel-track">
+		<div class="card" data-index="0">
+			<img src="img/menu1.png" alt="Team Member 1">
+		</div>
+		<div class="card" data-index="1">
+			<img src="img/menu2.png" alt="Team Member 2">
+		</div>
+		<div class="card" data-index="2">
+			<img src="img/menu3.png" alt="Team Member 3">
+		</div>
+		<div class="card" data-index="3">
+			<img src="img/menu4.png" alt="Team Member 4">
+		</div>
+		<div class="card" data-index="4">
+			<img src="img/menu5.png" alt="Team Member 5">
+		</div>
+		<div class="card" data-index="5">
+			<img src="img/menu6.png" alt="Team Member 6">
+		</div>
+	</div>
+	<button class="nav-arrow right">›</button>
+        </div>
+        <div class="member-info">
+	<h2 class="member-name">David Kim</h2>
+	<p class="member-role">Founder</p>
+        </div>
+        <div class="dots">
+	<div class="dot active" data-index="0"></div>
+	<div class="dot" data-index="1"></div>
+	<div class="dot" data-index="2"></div>
+	<div class="dot" data-index="3"></div>
+	<div class="dot" data-index="4"></div>
+	<div class="dot" data-index="5"></div>
+        </div>
+    </section>
+
+    <div class="menu3">
+        <p class="p1">
+            PACKAGING PREMIUM
+        </p>
+
+        <p class="p2">
+            BANYAK ISIAN BISA REQUEST MASAKAN SESUAI SELERA
+        </p>
+        <div class="kotak-menu">
+            <div class="kotakmenu-content">
+                <ul>
+                    <li>Nasi Putih / Nasi Arab</li>
+                    <li>Sate Kambing Empuk</li>
+                    <li>Cup Gule Spesial</li>
+                    <li>Kerupuk Finna</li>
+                    <li>Sambal Bumbu Kacang</li>
+                </ul>
+            </div>
+            <div class="kotakmenu-content">
+                <ul>
+                    <li>Acar + Sambal</li>
+                    <li>Buah Pisang</li>
+                    <li>Alat Makan Ekslusif</li>
+                    <li>Kartu Ucapan Aqiqah</li>
+                    <li>Sertifikat Aqiqah</li>
+                </ul>
+            </div>
+             <a class="kotakmenu-tombol" href="">Order Paket Kotakan</a>
+
+        </div>
+       
+    </div>
+
+
+
+    <script>
+
+        const teamMembers = [
+	{ name: "Paket Tasyakuran", role: "★★★★☆" },
+	{ name: "Paket Puas", role: "★★★★☆" },
+	{ name: "Paket Istimewa", role: "★★★★☆" },
+	{ name: "Paket Super", role: "★★★★☆" },
+	{ name: "Paket Istimewa", role: "★★★★☆" },
+	{ name: "Paket Platinum", role: "★★★★★" }
+];
+
+const cards = document.querySelectorAll(".card");
+const dots = document.querySelectorAll(".dot");
+const memberName = document.querySelector(".member-name");
+const memberRole = document.querySelector(".member-role");
+const leftArrow = document.querySelector(".nav-arrow.left");
+const rightArrow = document.querySelector(".nav-arrow.right");
+let currentIndex = 0;
+let isAnimating = false;
+
+function updateCarousel(newIndex) {
+	if (isAnimating) return;
+	isAnimating = true;
+
+	currentIndex = (newIndex + cards.length) % cards.length;
+
+	cards.forEach((card, i) => {
+		const offset = (i - currentIndex + cards.length) % cards.length;
+
+		card.classList.remove(
+			"center",
+			"left-1",
+			"left-2",
+			"right-1",
+			"right-2",
+			"hidden"
+		);
+
+		if (offset === 0) {
+			card.classList.add("center");
+		} else if (offset === 1) {
+			card.classList.add("right-1");
+		} else if (offset === 2) {
+			card.classList.add("right-2");
+		} else if (offset === cards.length - 1) {
+			card.classList.add("left-1");
+		} else if (offset === cards.length - 2) {
+			card.classList.add("left-2");
+		} else {
+			card.classList.add("hidden");
+		}
+	});
+
+	dots.forEach((dot, i) => {
+		dot.classList.toggle("active", i === currentIndex);
+	});
+
+	memberName.style.opacity = "0";
+	memberRole.style.opacity = "0";
+
+	setTimeout(() => {
+		memberName.textContent = teamMembers[currentIndex].name;
+		memberRole.textContent = teamMembers[currentIndex].role;
+		memberName.style.opacity = "1";
+		memberRole.style.opacity = "1";
+	}, 300);
+
+	setTimeout(() => {
+		isAnimating = false;
+	}, 800);
+}
+
+leftArrow.addEventListener("click", () => {
+	updateCarousel(currentIndex - 1);
+});
+
+rightArrow.addEventListener("click", () => {
+	updateCarousel(currentIndex + 1);
+});
+
+dots.forEach((dot, i) => {
+	dot.addEventListener("click", () => {
+		updateCarousel(i);
+	});
+});
+
+cards.forEach((card, i) => {
+	card.addEventListener("click", () => {
+		updateCarousel(i);
+	});
+});
+
+document.addEventListener("keydown", (e) => {
+	if (e.key === "ArrowLeft") {
+		updateCarousel(currentIndex - 1);
+	} else if (e.key === "ArrowRight") {
+		updateCarousel(currentIndex + 1);
+	}
+});
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener("touchstart", (e) => {
+	touchStartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener("touchend", (e) => {
+	touchEndX = e.changedTouches[0].screenX;
+	handleSwipe();
+});
+
+function handleSwipe() {
+	const swipeThreshold = 50;
+	const diff = touchStartX - touchEndX;
+
+	if (Math.abs(diff) > swipeThreshold) {
+		if (diff > 0) {
+			updateCarousel(currentIndex + 1);
+		} else {
+			updateCarousel(currentIndex - 1);
+		}
+	}
+}
+
+updateCarousel(0);
+
+
+    </script>
+
+    
+</body>
+</html>
