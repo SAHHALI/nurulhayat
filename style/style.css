@@ -13,6 +13,10 @@ body{
     height: 200vh;
 }
 
+.body-about{
+    height: 10vh;
+}
+
 
 .home{
     position: relative;
@@ -453,3 +457,53 @@ margin-left: 50px;
     width: 500px;
     margin-top: 50px;
 }
+
+.img-testi{
+    width: 700px;
+    margin-left: 30px;
+}
+
+
+/* FOOTER */
+
+.footer-about{
+    position: relative;
+    top: 50px;
+    background-color: #854836;
+    height: 330px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 50px;
+}
+
+.footer-content{
+    width: 400px;
+}
+
+.fcontent h1{
+    color: white;
+}
+
+.fcontent p{
+    color: white;
+}
+
+.fcontent-bottom{
+    margin-top: 20px;
+    color: white;
+    line-height: 30px;
+}
+
+.footer-content2{
+    color: white;
+    font-size: 15px;
+    padding: 15px;
+    margin-right: 60px;
+}
+
+.footer-content2 ul{
+    line-height: 40px;
+    margin-left: 20px;
+}
+
